@@ -1,0 +1,100 @@
+Q33: Write a program to check if a number is an Armstrong number.
+
+/*
+Sample Test Cases:
+Input 1:
+153
+Output 1:
+Armstrong
+
+Input 2:
+123
+Output 2:
+Not Armstrong
+
+*/
+
+ANS-
+#include <stdio.h>
+#include <math.h>
+
+int main() {
+    int num, originalNum, remainder, n = 0;
+    double result = 0.0;
+
+    printf("Enter a number: ");
+    scanf("%d", &num);
+
+    originalNum = num;
+
+    // Count number of digits
+    while (originalNum != 0) {
+        originalNum /= 10;
+        ++n;
+    }
+
+    originalNum = num;
+
+    // Calculate the sum of digits raised to the power n
+    while (originalNum != 0) {
+        remainder = originalNum % 10;
+        result += pow(remainder, n);
+        originalNum /= 10;
+    }
+
+    // Check if the number is an Armstrong number
+    if ((int)result == num)
+        printf("Armstrong\n");
+    else
+        printf("Not Armstrong\n");
+
+    return 0;
+}
+
+
+
+Q34: Write a program to check if a number is prime.
+
+/*
+Sample Test Cases:
+Input 1:
+7
+Output 1:
+Prime
+
+Input 2:
+10
+Output 2:
+Not prime
+
+*/
+
+ANS- 
+
+#include <stdio.h>
+
+int main() {
+    int num, i, isPrime = 1;
+
+    printf("Enter a number: ");
+    scanf("%d", &num);
+
+    if (num <= 1) {
+        isPrime = 0; // 0 and 1 are not prime numbers
+    } else {
+        for (i = 2; i <= num / 2; i++) {
+            if (num % i == 0) {
+                isPrime = 0;
+                break;
+            }
+        }
+    }
+
+    if (isPrime)
+        printf("Prime\n");
+    else
+        printf("Not prime\n");
+
+    return 0;
+}
+
