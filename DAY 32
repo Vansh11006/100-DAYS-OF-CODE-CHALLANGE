@@ -1,0 +1,121 @@
+Q63: Merge two arrays.
+
+/*
+Sample Test Cases:
+Input 1:
+3
+1 2 3
+2
+4 5
+Output 1:
+1 2 3 4 5
+
+*/
+
+ANS-
+#include <stdio.h>
+
+int main() {
+    int n1, n2;
+
+    // Input size of first array
+    printf("Enter size of first array:\n");
+    scanf("%d", &n1);
+
+    int a[n1];
+    printf("Enter elements of first array:\n");
+    for(int i = 0; i < n1; i++) {
+        scanf("%d", &a[i]);
+    }
+
+    // Input size of second array
+    printf("Enter size of second array:\n");
+    scanf("%d", &n2);
+
+    int b[n2];
+    printf("Enter elements of second array:\n");
+    for(int i = 0; i < n2; i++) {
+        scanf("%d", &b[i]);
+    }
+
+    // Merged array
+    int c[n1 + n2];
+
+    // Copy elements of first array
+    for(int i = 0; i < n1; i++) {
+        c[i] = a[i];
+    }
+
+    // Copy elements of second array
+    for(int i = 0; i < n2; i++) {
+        c[n1 + i] = b[i];
+    }
+
+    // Output merged array
+    printf("Merged Array:\n");
+    for(int i = 0; i < n1 + n2; i++) {
+        printf("%d ", c[i]);
+    }
+
+    return 0;
+}
+ Input-
+3
+1 2 3
+2
+4 5
+Output-
+1 2 3 4 5
+
+
+Q64: Find the digit that occurs the most times in an integer number.
+
+/*
+Sample Test Cases:
+Input 1:
+112233
+Output 1:
+1
+
+Input 2:
+887799
+Output 2:
+7
+
+*/
+
+ANS-
+#include <stdio.h>
+
+int main() {
+    long long n;
+    int freq[10] = {0};
+
+    printf("Enter the number:\n");
+    scanf("%lld", &n);
+
+    if (n < 0) n = -n;   // handle negative numbers
+
+    // Count digit frequency
+    while (n > 0) {
+        int digit = n % 10;
+        freq[digit]++;
+        n /= 10;
+    }
+
+    // Find digit with max frequency
+    int maxDigit = 0;
+    for (int i = 1; i < 10; i++) {
+        if (freq[i] > freq[maxDigit]) {
+            maxDigit = i;
+        }
+    }
+
+    printf("%d", maxDigit);
+    return 0;
+}
+
+Input
+112233
+Output
+1
