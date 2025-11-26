@@ -1,0 +1,90 @@
+Q69: Find the second largest element in an array.
+
+/*
+Sample Test Cases:
+Input 1:
+5
+10 20 30 40 50
+Output 1:
+40
+
+*/
+
+ANS- #include <stdio.h>
+
+int main() {
+    int n;
+    scanf("%d", &n);
+
+    int arr[n];
+    for(int i = 0; i < n; i++)
+        scanf("%d", &arr[i]);
+
+    int largest = arr[0];
+    int second = -1e9; // very small number
+
+    for(int i = 1; i < n; i++) {
+        if(arr[i] > largest) {
+            second = largest;
+            largest = arr[i];
+        } else if(arr[i] > second && arr[i] != largest) {
+            second = arr[i];
+        }
+    }
+
+    printf("%d", second);
+    return 0;
+}
+ Input
+5
+10 20 30 40 50
+Output
+40 
+
+
+Q70: Rotate an array to the right by k positions.
+
+/*
+Sample Test Cases:
+Input 1:
+5
+1 2 3 4 5
+2
+Output 1:
+4 5 1 2 3
+
+*/
+
+
+ANS-
+
+#include <stdio.h>
+
+int main() {
+    int n, k;
+    scanf("%d", &n);
+
+    int arr[n];
+    for(int i = 0; i < n; i++)
+        scanf("%d", &arr[i]);
+
+    scanf("%d", &k);
+
+    k = k % n;  // handle k > n
+
+    int result[n];
+    for(int i = 0; i < n; i++) {
+        result[(i + k) % n] = arr[i];
+    }
+
+    for(int i = 0; i < n; i++)
+        printf("%d ", result[i]);
+
+    return 0;
+}
+
+5
+1 2 3 4 5
+2
+Output
+4 5 1 2 3
